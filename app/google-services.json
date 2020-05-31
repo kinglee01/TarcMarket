@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "47152198221",
+    "firebase_url": "https://tarcmarketfyp-c486a.firebaseio.com",
+    "project_id": "tarcmarketfyp-c486a",
+    "storage_bucket": "tarcmarketfyp-c486a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:47152198221:android:d16a4f1c855406151aa204",
+        "android_client_info": {
+          "package_name": "com.example.tarcmarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "47152198221-hcbiu3k093cc1553h3o95k1oq1pk3dh6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tarcmarket",
+            "certificate_hash": "995b11d614a6461aaa180ef1867d1e89a708f55e"
+          }
+        },
+        {
+          "client_id": "47152198221-9epju7rrgrtvqvqhm8k4nsnbttdfbcp0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAigrIYqcYsyURzjri-C_nL-BZsPXTUZOg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "47152198221-9epju7rrgrtvqvqhm8k4nsnbttdfbcp0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
