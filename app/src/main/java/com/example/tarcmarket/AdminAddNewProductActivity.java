@@ -59,7 +59,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity
 
 
         CategoryName = getIntent().getExtras().get("category").toString();
-        ProductImagesRef = FirebaseStorage.getInstance().getReference().child("Product Images");
+        ProductImagesRef = FirebaseStorage.getInstance().getReference().child("ProductImages");
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
 
@@ -226,7 +226,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity
         productMap.put("description", Description);
         productMap.put("image", downloadImageUrl);
         productMap.put("price", Price);
-        productMap.put("Product Name", ProductName);
+        productMap.put("ProductName", ProductName);
 
         ProductsRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
