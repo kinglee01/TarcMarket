@@ -16,6 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:text=" Add New Product "
+        android:textColor="@color/colorPrimaryDark"
         android:textAlignment="center"
         android:textSize="26sp"
         android:textStyle="bold"/>
@@ -144,6 +145,26 @@
             />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/check_new_orders_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="New Orders"
+        android:textSize="18dp"
+        android:layout_above="@+id/logout_admin_button"
+        android:layout_margin="5dp"
+        />
+
+    <Button
+        android:id="@+id/logout_admin_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:textSize="18dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="5dp"
+        />
 
 
 
