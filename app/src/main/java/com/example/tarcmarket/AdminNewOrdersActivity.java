@@ -1,14 +1,92 @@
 package com.example.tarcmarket;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
-public class AdminNewOrdersActivity extends AppCompatActivity {
+import com.example.tarcmarket.Model.AdminNewOrders;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+public class AdminNewOrdersActivity extends AppCompatActivity
+{
+    private RecyclerView newOrdersList;
+    private DatabaseReference newOrdersRef;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_new_orders);
+
+        newOrdersRef = FirebaseDatabase.getInstance().getReference().child("Orders");
+
+        newOrdersList = findViewById(R.id.new_orders_list);
+        newOrdersList.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+
+        FirebaseRecyclerOptions<AdminNewOrders> options =
+                new FirebaseRecyclerOptions.Builder<AdminNewOrders>()
+                .setQuery(newOrdersRef, AdminNewOrders.class)
+                .build();
+
+        FirebaseRecyclerAdapter<AdminNewOrders,AdminOrdersViewHolder> adapter =
+                 new FirebaseRecyclerAdapter<AdminNewOrders, AdminOrdersViewHolder>(options) {
+                     @Override
+                     protected void onBindViewHolder(@NonNull AdminOrdersViewHolder holder, int position, @NonNull AdminNewOrders model)
+                     {
+                             holder.customerName.setText("CustomerName : " + model.getName());
+                             holder.customerPhoneNumber.setText("CustomerPhone: " + model.getPhone());
+                             holder.customerTotalPrice.setText("Total Price : RM" + model.getTotalAmount());
+                             holder.customerDateTime .setText("Customer order date:" + model.getDate() + "," + model.getTime());
+                             holder.customerAddress.setText("Customer Address : " + model.getAddress() + "," +model.getCity());
+
+                     }
+
+                     @NonNull
+                     @Override
+                     public AdminOrdersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+                     {
+                         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orders_layout, parent, false);
+                         return new AdminOrdersViewHolder(view);                     }
+                 };
+
+        newOrdersList.setAdapter(adapter);
+        adapter.startListening();
+    }
+
+    public static class AdminOrdersViewHolder extends RecyclerView.ViewHolder
+    {
+        public TextView customerName, customerPhoneNumber, customerTotalPrice, customerDateTime, customerAddress;
+        public Button ShowCustomerOrdersButton;
+
+        public AdminOrdersViewHolder(@NonNull View itemView)
+        {
+            super(itemView);
+
+            customerName = itemView.findViewById(R.id.customer_name);
+            customerPhoneNumber = itemView.findViewById(R.id.customer_order_phone_number);
+            customerTotalPrice = itemView.findViewById(R.id.total_order__price);
+            customerDateTime = itemView.findViewById(R.id.customer_ordered_time_and_date);
+            customerAddress = itemView.findViewById(R.id.customer_order_address);
+            ShowCustomerOrdersButton =itemView.findViewById(R.id.show_customer_ordered_products);
+
+
+        }
     }
 }
