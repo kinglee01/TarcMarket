@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +49,7 @@ public class AdminNewOrdersActivity extends AppCompatActivity
         FirebaseRecyclerAdapter<AdminNewOrders,AdminOrdersViewHolder> adapter =
                  new FirebaseRecyclerAdapter<AdminNewOrders, AdminOrdersViewHolder>(options) {
                      @Override
-                     protected void onBindViewHolder(@NonNull AdminOrdersViewHolder holder, int position, @NonNull AdminNewOrders model)
+                     protected void onBindViewHolder(@NonNull AdminOrdersViewHolder holder, final int position, @NonNull final AdminNewOrders model)
                      {
                              holder.customerName.setText("CustomerName : " + model.getName());
                              holder.customerPhoneNumber.setText("CustomerPhone: " + model.getPhone());
@@ -56,6 +57,18 @@ public class AdminNewOrdersActivity extends AppCompatActivity
                              holder.customerDateTime .setText("Customer order date:" + model.getDate() + "," + model.getTime());
                              holder.customerAddress.setText("Customer Address : " + model.getAddress() + "," +model.getCity());
 
+                             holder.ShowCustomerOrdersButton.setOnClickListener(new View.OnClickListener() {
+                                 @Override
+                                 public void onClick(View v)
+                                 {
+                                     String uID = getRef(position).getKey();
+
+                                     Intent intent = new Intent(AdminNewOrdersActivity.this,AdminUserProductsActivity.class);
+                                     intent.putExtra("uid", uID);
+                                     startActivity(intent);
+
+                                 }
+                             });
                      }
 
                      @NonNull
