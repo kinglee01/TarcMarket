@@ -11,7 +11,7 @@ import com.example.tarcmarket.R;
 
 public class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
 {
-    public TextView txtProductName, txtProductPrice, txtProductQuantity;
+    public TextView txtProductName, txtProductPrice, txtProductQuantity , txtProductTotalPrice ;
     private ItemClickListner itemClickListner;
 
     public CartViewHolder(@NonNull View itemView)
@@ -21,6 +21,7 @@ public class CartViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         txtProductName = itemView.findViewById(R.id.cart_product_name);
         txtProductPrice = itemView.findViewById(R.id.cart_product_price);
         txtProductQuantity = itemView.findViewById(R.id.cart_product_quantity);
+        txtProductTotalPrice = itemView.findViewById(R.id.cart_product_total_price);
 
     }
 

@@ -78,7 +78,6 @@ public class CartActivity extends AppCompatActivity
     {
         super.onStart();
 
-        txtTotalAmount.setText("Total Price = " + String.valueOf(overTotalPrice));
 
         CheckOrderState();
 
@@ -101,6 +100,9 @@ public class CartActivity extends AppCompatActivity
 
                 int oneTypeProductTPrice = ((Integer.valueOf(model.getPrice()))) * Integer.valueOf(model.getQuantity());
                 overTotalPrice = overTotalPrice + oneTypeProductTPrice;
+
+                holder.txtProductTotalPrice.setText("Total Price = RM" +  oneTypeProductTPrice) ;
+                txtTotalAmount.setText("Overal Total Price = " + String.valueOf(overTotalPrice));
 
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {

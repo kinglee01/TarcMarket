@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="20dp"
-        android:text="Confirm order"
+        android:text="CheckOut"
         android:textAllCaps="false"
         android:background="@color/colorPrimaryDark"
         android:textSize="20dp"
