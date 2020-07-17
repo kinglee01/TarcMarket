@@ -23,7 +23,7 @@ import java.util.HashMap;
 
 public class ConfirmFinalOrderActivity extends AppCompatActivity
 {
-    private EditText nameEditText, phoneEditText, addressEditText, cityEditText;
+    private EditText nameEditText, phoneEditText, addressEditText, cityEditText, creditCardNo, cvvNo;
     private Button confirmOrderBtn;
 
     private  String totalAmount = "";
@@ -41,6 +41,8 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity
         phoneEditText = (EditText) findViewById(R.id.shipment_phone_number);
         addressEditText = (EditText) findViewById(R.id.shipment_address);
         cityEditText = (EditText) findViewById(R.id.shipment_city);
+        creditCardNo = (EditText) findViewById(R.id.credit_card);
+        cvvNo = (EditText)findViewById(R.id.cvv_number);
 
 
         confirmOrderBtn.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +62,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity
         }
         else if (TextUtils.isEmpty(phoneEditText.getText().toString()))
         {
-            Toast.makeText(this, "Please Enter Your Phone Number.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please Enter Your phone number.", Toast.LENGTH_SHORT).show();
         }
         else if (TextUtils.isEmpty(addressEditText.getText().toString()))
         {
@@ -69,6 +71,14 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity
         else if (TextUtils.isEmpty(cityEditText.getText().toString()))
         {
             Toast.makeText(this, "Please Enter Your Living City.", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(creditCardNo.getText().toString()))
+        {
+            Toast.makeText(this, "Please Enter Your credit card.", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(cvvNo.getText().toString()))
+        {
+            Toast.makeText(this, "Please Enter Your cvv.", Toast.LENGTH_SHORT).show();
         }
         else
         {
@@ -97,6 +107,8 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity
         ordersMap.put("phone", phoneEditText.getText().toString());
         ordersMap.put("address", addressEditText.getText().toString());
         ordersMap.put("city", cityEditText.getText().toString());
+        ordersMap.put("creditNo", creditCardNo.getText().toString());
+        ordersMap.put("cvv", cvvNo.getText().toString());
         ordersMap.put("date", saveCurrentDate);
         ordersMap.put("time", saveCurrentTime);
         ordersMap.put("state", "not shipped");

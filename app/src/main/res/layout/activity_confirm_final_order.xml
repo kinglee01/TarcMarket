@@ -23,12 +23,49 @@
         android:id="@+id/shipment_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:hint="Enter name"
+        android:layout_below="@+id/txt"
+
         />
+
+
+    <RelativeLayout
+        android:id="@+id/relative_layout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shipment_name">
+
+        <EditText
+            android:id="@+id/credit_card"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="Enter credit card numbers"
+            android:layout_alignParentStart="true"
+            android:inputType="number"
+            android:maxLength="16"
+            />
+
+
+
+        <EditText
+            android:id="@+id/cvv_number"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:inputType="number"
+            android:layout_alignParentEnd="true"
+            android:hint="Enter cvv"
+            android:maxLength="3"
+            />
+    </RelativeLayout>
 
     <EditText
         android:id="@+id/shipment_phone_number"
@@ -37,12 +74,14 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:layout_below="@+id/relative_layout5"
         android:inputType="number"
-        android:layout_below="@+id/shipment_name"
+        android:layout_alignParentEnd="true"
         android:hint="Enter phone number"
         />
 
-    <EditText
+
+<EditText
         android:id="@+id/shipment_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
