@@ -81,6 +81,7 @@ public class CartActivity extends AppCompatActivity
 
         CheckOrderState();
 
+
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
 
         FirebaseRecyclerOptions<Cart> options =
@@ -101,8 +102,11 @@ public class CartActivity extends AppCompatActivity
                 int oneTypeProductTPrice = ((Integer.valueOf(model.getPrice()))) * Integer.valueOf(model.getQuantity());
                 overTotalPrice = overTotalPrice + oneTypeProductTPrice;
 
+                holder.txtProductTotalPrice.setVisibility(View.VISIBLE);
                 holder.txtProductTotalPrice.setText("Total Price = RM" +  oneTypeProductTPrice) ;
-                txtTotalAmount.setText("Overal Total Price = " + String.valueOf(overTotalPrice));
+                txtTotalAmount.setText("Overal Total Price = RM" + String.valueOf(overTotalPrice));
+
+                txtTotalAmount.setVisibility(View.VISIBLE);
 
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
