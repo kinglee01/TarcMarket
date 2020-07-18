@@ -1,8 +1,10 @@
 package com.example.tarcmarket;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -50,6 +52,8 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 Check();
+
+
             }
         });
     }
@@ -59,6 +63,14 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity
         if (TextUtils.isEmpty(nameEditText.getText().toString()))
         {
             Toast.makeText(this, "Please Enter Your Username.", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(creditCardNo.getText().toString()))
+        {
+            Toast.makeText(this, "Please Enter Your credit card.", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(cvvNo.getText().toString()))
+        {
+            Toast.makeText(this, "Please Enter Your cvv.", Toast.LENGTH_SHORT).show();
         }
         else if (TextUtils.isEmpty(phoneEditText.getText().toString()))
         {
@@ -72,17 +84,35 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity
         {
             Toast.makeText(this, "Please Enter Your Living City.", Toast.LENGTH_SHORT).show();
         }
-        else if (TextUtils.isEmpty(creditCardNo.getText().toString()))
-        {
-            Toast.makeText(this, "Please Enter Your credit card.", Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty(cvvNo.getText().toString()))
-        {
-            Toast.makeText(this, "Please Enter Your cvv.", Toast.LENGTH_SHORT).show();
-        }
+
         else
         {
-            ConfirmOder();
+            AlertDialog.Builder builder = new AlertDialog.Builder(ConfirmFinalOrderActivity.this);
+            builder.setTitle("Confirm checkout: ");
+
+            builder.setMessage("Card number: " + creditCardNo.getText().toString() + "\n" +
+                    "Card CVV: " + cvvNo.getText().toString() + "\n" +
+                    "Address: " + addressEditText.getText().toString() + "\n" +
+                    "Phone number: " + phoneEditText.getText().toString());
+            builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+
+                    ConfirmOder();
+                    dialogInterface.dismiss();
+                    Toast.makeText(ConfirmFinalOrderActivity.this, "Thank you for purchase", Toast.LENGTH_LONG).show();
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                }
+            });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+
         }
     }
 
